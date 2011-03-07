@@ -5,4 +5,4 @@ To install this script you will need to:
 2. Tar the musiXmatchLyrics directory as an Amarok script tar: $ tar -czvf musiXmatchLyrics.amarokscript.tar.gz musiXmatchLyrics/
 3. In Amarok in the 'Tools' menu select 'Script Manager' then 'Get More Scripts' to browse and download musiXmatchLyrics.amarokscript.tar.gz from your local file system.
 
-Notice that this script is not yet available in kde-apps.org . It will be uploaded there once fully cleaned up and tested.
+Notice that this script is not yet available in kde-apps.org . It might be uploaded there once fully cleaned up and tested.
