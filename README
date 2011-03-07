@@ -1,4 +1,4 @@
-This is an Amarok Script to fetch your lyrics from musiXmatch.com
+This is an Amarok Script to retrieve your lyrics from musiXmatch.com
 
 To install this script you will need to:
 1. Add you musiXmatch API key in main.js : APIKEY = "YOUR KEY HERE";
