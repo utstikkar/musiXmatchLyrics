@@ -24,6 +24,7 @@
 
 Importer.loadQtBinding( "qt.core" );
 Importer.loadQtBinding( "qt.xml" );
+Importer.loadQtBinding( "qt.gui" );
 
 /* GLOBAL VARIABLES */
 // template for the xml object that will be populated and passed to Amarok.Lyrics.showLyrics()
@@ -46,6 +47,17 @@ TITLE  = "";
 ERRORMSG = "Lyrics not found. Sorry.";
 XMLNOTFOUND="<suggestions page_url=\"http://musixmatch.com\"></suggestions>"
 
+
+function loadImage(reply)
+{ 
+     Amarok.debug("-------------------------Beginning loadImage-------"+(reply.toString())+"-------------------------");
+     var pix = new QPixmap();
+     pix.loadFromData( reply );
+     //label = new QLabel();
+     //label.pixmap = pix;
+     //label.show();
+     Amarok.debug("-------------------------End loadImage--------------------------"+reply+"-------------------------");
+}
 
 /* receives a json message from musixmatch from a track id */
 function onLyricsReceived( response, redirects )
@@ -70,12 +82,20 @@ function onLyricsReceived( response, redirects )
                 //lyrics found
                 var lyrics_body = lyrics.lyrics_body.replace(/\n/g,"<br/>");
                 var end_result = "<html><body>"+lyrics_body+"<br/><pre>"+lyrics.lyrics_copyright +
-                 //"<img src=\""+lyrics.pixel_tracking_url + "\"/></body></html>";
-                "</pre><script type=\"text/javascript\" src=\""+
-                lyrics.script_tracking_url+"\"></script> </body></html>";
-                Amarok.debug("end result-------------------------------\n\n\n---------------"+
-                    end_result);
+                 //"<img src=\""+lyrics.pixel_tracking_url + "\" /></body></html>";
+                "</body></html>";
+                //"</pre><script type=\"text/javascript\" src=\""+
+                //lyrics.script_tracking_url+"\"></script> </body></html>";
+                //Amarok.debug("end result-------------------------------\n\n\n---------------"+
+                //    end_result);
+                Amarok.debug("pixel tracking url:"+lyrics.pixel_tracking_url);
+                //var pixel_url = lyrics.pixel_tracking_url;
+                var pixel_url = QUrl.fromEncoded(  new QByteArray( lyrics.pixel_tracking_url), 1);
+                //var pixel_url = QUrl.fromEncoded(  new QByteArray("http://amarok.kde.org/sites/default/themes/amarok/logo.png"), 1);
+
+                new DataDownloader( pixel_url, loadImage );
                 Amarok.Lyrics.showLyricsHtml(end_result);
+                //new DataDownloader( lyrics.pixel_tracking_url, showImage );
             }    
         }
     }
