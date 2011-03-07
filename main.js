@@ -1,6 +1,6 @@
 /**************************************************************************
-*   Amarok 2 lyrics script to fetch lyrics from lyrics.wikia.com          *
-*   (formerly lyricwiki.org)                                              *
+*   Amarok 2 lyrics script to fetch lyrics from musiXmatch.com            *
+*   Based on the Lyricwiki plugin written by Aaron Reichman               *
 *                                                                         *
 *   Copyright                                                             *
 *   (C) 2011 Amélie Anglade <amelie.anglade@gmail.com>                    *
